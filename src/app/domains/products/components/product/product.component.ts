@@ -11,7 +11,6 @@ export class ProductComponent {
   @Input({ required: true }) img: string = '';
   @Input() price: number = 0;
   @Input() title: string = '';
-
   @Output() addToCart = new EventEmitter();
 
   addToCartHandler() {
