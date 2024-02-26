@@ -31,10 +31,10 @@
     <div class="flex items-center">
       <button class="p-2 border rouded relative" (click)="toggleSideMenu()">
         <div
-          *ngIf="cart.length"
+          *ngIf="cart().length"
           class="absolute -top-2 -left-2 rounded h-5 w-5 bg-black text-white text-xs"
         >
-          {{ cart.length }}
+          {{ cart().length }}
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -81,10 +81,10 @@
   <div class="pt-4 flex flex-col">
     <div
       class="flex justify-between items-center space-y-2"
-      *ngFor="let product of cart"
+      *ngFor="let product of cart()"
     >
       <div class="flex space-x-2 items-center">
-        <img class="w-6 h-6" [src]="product.image" [alt]="product.title" />
+        <img class="w-6 h-6" [src]="product.images[0]" [alt]="product.title" />
         <h3>{{ product.title }}</h3>
       </div>
       <p>{{ product.price }} €</p>
