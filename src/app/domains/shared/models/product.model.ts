@@ -3,5 +3,10 @@ export interface Product {
     title: string;
     price: number;
     images: string[];
+    description: string;
+    category?: {
+        image: string
+        name: string
+    }
     creationAt?: string
 }
