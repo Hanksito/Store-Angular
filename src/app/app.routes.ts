@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
-import { ListComponent } from './domains/products/pages/list/list.component'
 import { NotFoundComponent } from './domains/info/pages/not-found/not-found.component';
 import { LayoutComponent } from '@shared/components/layout/layout.component';
-import { ProductDetailComponent } from './domains/products/pages/product-detail/product-detail.component';
+
 
 export const routes: Routes = [
     {
@@ -11,11 +10,11 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                component: ListComponent
+                loadComponent: () => import('./domains/products/pages/list/list.component')
             },
             {
                 path: 'product/:id',
-                component: ProductDetailComponent
+                loadComponent: () => import('./domains/products/pages/product-detail/product-detail.component')
             }
         ]
     },

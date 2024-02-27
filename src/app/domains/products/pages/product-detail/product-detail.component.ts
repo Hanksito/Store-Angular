@@ -11,8 +11,9 @@ import { ProductService } from '@shared/services/product.service';
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
-export class ProductDetailComponent {
+export default class ProductDetailComponent {
   product = signal<Product | null>(null)
+  cover = signal<string>('')
   @Input() id?: string;
   private productService = inject(ProductService)
   private cartService = inject(CartService)
@@ -25,7 +26,9 @@ export class ProductDetailComponent {
       this.cartService.addToCart(product)
     }
   }
-
+  changeCover(newImg: string) {
+    this.cover.set(newImg)
+  } 
 
 
 
@@ -34,6 +37,10 @@ export class ProductDetailComponent {
       this.productService.getOne(this.id).subscribe({
         next: (product) => {
           this.product.set(product)
+          if (product.images.length > 0) {
+            this.cover.set(product.images[0])
+
+          }
         }
       })
     }

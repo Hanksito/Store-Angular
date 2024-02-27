@@ -15,7 +15,7 @@ export class ProductComponent {
   @Input({ required: true }) product!: Product;
 
   @Output() addToCart = new EventEmitter();
-  random = Math.floor(Math.random() * 100) + 1
+
 
   addToCartHandler() {
     this.addToCart.emit(this.product)
